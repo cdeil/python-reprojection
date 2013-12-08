@@ -71,6 +71,32 @@ int printDir(char *point, char *vector, int dir);
 Vec P[8], Q[8], V[16];
 int nv;
 
+
+
+double computeSolidAngle(double *lon, double *lat, double *solid_angle, int n0, int n1) {
+
+  int i, j;
+  double solid_angle;
+
+  for (int i0 = 0; i0 < n0 - 1; ++i0) {
+    for (int i1 = 0; i1 < n1 - 1; ++i1) {
+      V[0].x = cos(lon[i]) * cos(lat[i]);
+      V[0].y = sin(lon[i]) * cos(lat[i]);
+      V[0].z = sin(lat[i]);
+
+    }
+  }
+
+  for (i = 0; i < 4; ++i) {
+    V[i].x = cos(lon[i]) * cos(lat[i]);
+    V[i].y = sin(lon[i]) * cos(lat[i]);
+    V[i].z = sin(lat[i]);
+  }
+
+  return Girard();
+}
+
+
 /*
  * Sets up the polygons, runs the overlap computation, and returns the area of overlap.
  */
